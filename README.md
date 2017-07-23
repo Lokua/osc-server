@@ -19,7 +19,7 @@ const { onMessage, send/*, server, config */ } = createServer({
   outputPort: 9001,
   outputHost: `0.0.0.0`,
   exitOnError: false,
-  formatAddress: x => `/${x}`,
+  formatAddress: x => x,
   debug: true
 })
 

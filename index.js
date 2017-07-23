@@ -10,7 +10,7 @@ const defaultConfig = {
   outputPort: 9001,
   outputHost: `0.0.0.0`,
   exitOnError: false,
-  formatAddress: x => `/${x}`,
+  formatAddress: x => x,
   debug: true
 }
 
@@ -27,12 +27,15 @@ function createServer(configuration = {}) {
   })
 
   if (config.debug) {
-    server.on(`listening`, () => console.log(`osc-server: %j`, config))
+    server.on(`listening`, () => console.log(`[osc-server]\n`, config))
   }
 
   server.bind(config.inputPort)
 
-  onExit(() => server.close())
+  onExit(() => {
+    if (config.debug) console.log(`[osc-server] closing`)
+    server.close()
+  })
 
   const onMessage = fn => {
     server.on(`message`, (msg, rinfo) => {
@@ -46,6 +49,7 @@ function createServer(configuration = {}) {
       address: config.formatAddress(address),
       args: [{ type: `float`, value }]
     })
+    if (config.debug) console.log(`[osc-server]`, config.formatAddress(address), value)
     server.send(buffer, 0, buffer.length, config.outputPort, config.outputHost)
   }
 
