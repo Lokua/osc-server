@@ -1,0 +1,20 @@
+{
+  "name": "@lokua/osc-server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokua/osc-server.git"
+  },
+  "author": "Joshua Kleckner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lokua/osc-server/issues"
+  },
+  "homepage": "https://github.com/lokua/osc-server#readme",
+  "dependencies": {
+    "@lokua/on-exit": "0.0.2",
+    "osc-msg": "~1.2.0"
+  }
+}

@@ -1,0 +1,4 @@
+# osc-server
+
+## License
+MIT
