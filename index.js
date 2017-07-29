@@ -2,8 +2,6 @@ const dgram = require(`dgram`)
 const oscmsg = require(`osc-msg`)
 const onExit = require(`@lokua/on-exit`)
 
-module.exports = createServer
-
 const defaultConfig = {
   inputPort: 9002,
   inputHost: `0.0.0.0`,
@@ -14,7 +12,7 @@ const defaultConfig = {
   debug: true
 }
 
-function createServer(configuration = {}) {
+module.exports = function createServer(configuration = {}) {
   const config = Object.assign({}, defaultConfig, configuration)
   const server = dgram.createSocket(`udp4`)
 
